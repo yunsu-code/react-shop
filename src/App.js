@@ -1,9 +1,9 @@
-import { Reset } from 'styled-reset';
+import MainContainer from 'view/Main/MainContainer';
 
 function App() {
   return (
     <>
-      <Reset />
+      <MainContainer />
     </>
   );
 }

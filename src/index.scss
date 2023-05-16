@@ -1,0 +1,28 @@
+@import './assets/scss/common/fonts';
+
+*,
+*::before,
+*::atfer {
+  box-sizing: border-box;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+html,
+body {
+  font-family: 'NotoSans', 'Helvetica', 'Constantia', 'Apple SD Gothic Neo',
+    'AppleGothic', 'Apple Gothic', '-apple-system', sans-serif;
+  color: #4e3836;
+}

@@ -1,14 +1,19 @@
 import React from 'react';
 import cx from 'classnames';
-import PropTypes from 'prop-types';
-const UiCircleButton = ({ color, hover, num }) => {
-  return <span>{num}</span>;
-};
+import styles from 'assets/scss/components/atoms/UiCircleButton.module.scss';
 
-UiCircleButton.defaultProps = {};
-
-UiCircleButton.propTypes = {
-  num: PropTypes.number,
+const UiCircleButton = ({ color = 'white', hover = false, num = 1 }) => {
+  return (
+    <span
+      className={cx(
+        `${styles.circleBtn}`,
+        hover ? styles.hover : '',
+        `${styles[color]}`,
+      )}
+    >
+      <span>{num}</span>
+    </span>
+  );
 };
 
 export default UiCircleButton;

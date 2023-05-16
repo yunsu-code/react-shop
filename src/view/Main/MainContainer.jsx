@@ -1,33 +1,48 @@
 import { useEffect } from 'react';
+import cx from 'classnames';
+import video from 'assets/video/main_vd.mp4';
 import UiHalfWrap from '../../components/atoms/UiHalfWrap';
-import styles from 'assets/scss/components/atoms/UiHalfWrap.module.scss';
 import UiCircleButton from 'components/atoms/UiCircleButton';
+import UiUnderlineLink from 'components/atoms/UiUnderlineLink';
+import styles from 'assets/scss/view/Main/MainContainer.module.scss';
+import S from 'assets/scss/components/atoms/UiHalfWrap.module.scss';
 
 const MainContainer = () => {
-  const container = document.getElementsByClassName(`${styles.fullContainer}`);
+  const container = document.getElementsByClassName(`${S.fullContainer}`);
 
   const listener = () => {
     const scrollY = window.scrollY;
     const offsetTopArray = [];
 
-    for (var i = 0; i < container.length; i++) {
+    for (let i = 0; i < container.length; i++) {
       offsetTopArray.push(container[i].offsetTop);
     }
 
-    for (var i = 0; i < container.length; i++) {
-      if (container[i].classList.contains('multiple')) {
-        if (offsetTopArray[i] <= scrollY) {
-          container[i].classList.add(`${styles.fixed}`);
+    for (let i = 0; i < container.length; i++) {
+      if (matchMedia('screen and (min-width: 900px)').matches) {
+        container[i].classList.remove('single');
 
-          container[i].classList.remove(`${styles.end}`);
+        if (container[i].classList.contains('multiple')) {
+          if (offsetTopArray[i] <= scrollY) {
+            container[i].classList.add(`${S.fixed}`);
 
-          if (offsetTopArray[i + 1] - window.innerHeight <= scrollY) {
-            container[i].classList.remove(`${styles.fixed}`);
+            container[i].classList.remove(`${S.end}`);
 
-            container[i].classList.add(`${styles.end}`);
+            if (offsetTopArray[i + 1] - window.innerHeight <= scrollY) {
+              container[i].classList.remove(`${S.fixed}`);
+
+              container[i].classList.add(`${S.end}`);
+            }
+          } else {
+            container[i].classList.remove(`${S.fixed}`);
           }
-        } else {
-          container[i].classList.remove(`${styles.fixed}`);
+        }
+      } else {
+        console.log('ssss');
+        if (container[i].classList.contains('multiple')) {
+          container[i].classList.add('single');
+          container[i].classList.remove(`${S.fixed}`);
+          container[i].classList.remove(`${S.end}`);
         }
       }
     }
@@ -42,7 +57,26 @@ const MainContainer = () => {
 
   return (
     <div>
-      <UiHalfWrap></UiHalfWrap>
+      <UiHalfWrap
+        className={cx(styles.mainSection)}
+        firstChild={
+          <>
+            <video autoPlay muted loop>
+              <source src={video} type="video/mp4"></source>
+            </video>
+            <div className={styles.desc}>
+              <span>8th New Collection</span>
+              <h2>BREEZE OF NEW CHANGE</h2>
+              <p>
+                Face the breeze of change
+                <br />
+                and step out of your comfort zone
+              </p>
+              <UiUnderlineLink color="white" text={'Go Shop >'} />
+            </div>
+          </>
+        }
+      ></UiHalfWrap>
       <UiHalfWrap
         firstChild={<div></div>}
         secondChild={

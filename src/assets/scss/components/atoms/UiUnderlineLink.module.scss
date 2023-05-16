@@ -1,0 +1,15 @@
+@import '../../common/utils';
+
+.lineLink {
+  text-decoration: underline;
+  &:hover {
+    text-decoration: unset;
+  }
+  // color
+  &.pink {
+    color: $pink;
+  }
+  &.white {
+    color: #fff;
+  }
+}
