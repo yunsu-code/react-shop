@@ -11,7 +11,7 @@
     height: 100vh;
   }
 
-  &[class~='multiple'] {
+  &.multiple {
     .firstChild {
       width: 50%;
       height: 100vh;
@@ -37,45 +37,45 @@
         object-fit: cover;
       }
     }
-    &[class~='single'] {
-      .firstChild {
-        width: 100%;
-        height: auto;
-        position: unset;
-        top: 0;
-        left: 0;
-        div {
-          width: 100%;
-          height: 100%;
-        }
-        img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
-      }
+    &.fixed .firstChild {
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: auto;
+    }
 
-      .secondChild {
-        height: auto;
-        padding-left: 0;
-        img {
-          width: 100%;
-          object-fit: cover;
-        }
-      }
+    &.end .firstChild {
+      position: absolute;
+      top: auto;
+      left: 0;
+      bottom: 0;
     }
   }
-  &.fixed .firstChild {
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: auto;
-  }
+  &.single {
+    .firstChild {
+      width: 100%;
+      height: auto;
+      position: unset;
+      top: 0;
+      left: 0;
+      div {
+        width: 100%;
+        height: 100%;
+      }
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
 
-  &.end .firstChild {
-    position: absolute;
-    top: auto;
-    left: 0;
-    bottom: 0;
+    .secondChild {
+      height: auto;
+      padding-left: 0;
+      img {
+        width: 100%;
+        object-fit: cover;
+      }
+    }
   }
 }

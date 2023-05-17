@@ -1,14 +1,20 @@
 import React from 'react';
 import cx from 'classnames';
 import styles from 'assets/scss/components/atoms/UiHalfWrap.module.scss';
+import useMediaQuery from 'assets/js/useMediaQuery';
 
 const UiHalfWrap = ({ firstChild, secondChild, className }) => {
+  const isTablet = useMediaQuery(900);
   return (
     <>
       <div
         className={cx(
           `${styles.fullContainer}`,
-          firstChild && secondChild ? 'multiple' : '',
+          firstChild && secondChild
+            ? isTablet
+              ? styles.single
+              : styles.multiple
+            : '',
           className,
         )}
       >

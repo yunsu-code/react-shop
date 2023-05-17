@@ -19,30 +19,19 @@ const MainContainer = () => {
     }
 
     for (let i = 0; i < container.length; i++) {
-      if (matchMedia('screen and (min-width: 900px)').matches) {
-        container[i].classList.remove('single');
+      if (container[i].classList.contains(`${S.multiple}`)) {
+        if (offsetTopArray[i] <= scrollY) {
+          container[i].classList.add(`${S.fixed}`);
 
-        if (container[i].classList.contains('multiple')) {
-          if (offsetTopArray[i] <= scrollY) {
-            container[i].classList.add(`${S.fixed}`);
-
-            container[i].classList.remove(`${S.end}`);
-
-            if (offsetTopArray[i + 1] - window.innerHeight <= scrollY) {
-              container[i].classList.remove(`${S.fixed}`);
-
-              container[i].classList.add(`${S.end}`);
-            }
-          } else {
-            container[i].classList.remove(`${S.fixed}`);
-          }
-        }
-      } else {
-        console.log('ssss');
-        if (container[i].classList.contains('multiple')) {
-          container[i].classList.add('single');
-          container[i].classList.remove(`${S.fixed}`);
           container[i].classList.remove(`${S.end}`);
+
+          if (offsetTopArray[i + 1] - window.innerHeight <= scrollY) {
+            container[i].classList.remove(`${S.fixed}`);
+
+            container[i].classList.add(`${S.end}`);
+          }
+        } else {
+          container[i].classList.remove(`${S.fixed}`);
         }
       }
     }
@@ -58,7 +47,7 @@ const MainContainer = () => {
   return (
     <div>
       <UiHalfWrap
-        className={cx(styles.mainSection)}
+        className={styles.mainSection}
         firstChild={
           <>
             <video autoPlay muted loop>
