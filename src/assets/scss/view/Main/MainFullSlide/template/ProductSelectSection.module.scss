@@ -1,0 +1,24 @@
+.pdSlide {
+  height: 100%;
+  .imgSec {
+    display: none;
+  }
+  .productSec {
+    height: 100%;
+    .productSecSwiper {
+      height: 100vw;
+    }
+    .pd {
+      height: 100vw;
+      img {
+        width: 100%;
+      }
+    } 
+  }
+  [class^="swiper-pagination"] {
+    position: absolute;
+
+  }
+  .paginationBtn {
+  }
+}
