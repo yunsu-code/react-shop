@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
-import styles from 'assets/scss/components/atoms/UiHalfWrap.module.scss';
+import styles from '@scss_comp/atoms/UiHalfWrap.module.scss';
 import useMediaQuery from 'assets/js/useMediaQuery';
 
 const UiHalfWrap = ({ firstChild, secondChild, className }) => {
@@ -9,7 +9,7 @@ const UiHalfWrap = ({ firstChild, secondChild, className }) => {
     <>
       <div
         className={cx(
-          `${styles.fullContainer}`,
+          styles.fullContainer,
           firstChild && secondChild
             ? isTablet
               ? styles.single

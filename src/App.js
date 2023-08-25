@@ -1,4 +1,4 @@
-import MainContainer from 'view/Main/MainContainer';
+import MainContainer from '@page/main/MainContainer';
 
 function App() {
   return (

@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from 'assets/scss/components/atoms/UiUnderlineLink.module.scss';
+import styles from '@scss_comp/atoms/UiUnderlineLink.module.scss';
 import cx from 'classnames';
 
 const UiUnderlineLink = ({

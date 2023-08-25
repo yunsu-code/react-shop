@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
-import UiHalfWrap from '../../../components/atoms/UiHalfWrap';
-import styles from 'assets/scss/view/Main/MainFullSlide/MainFullSlide.module.scss';
+import UiHalfWrap from '@components/atoms/UiHalfWrap';
+import styles from '@scss_view/main/mainFullSlide/MainFullSlide.module.scss';
 
 const SNS = () => {
   return (

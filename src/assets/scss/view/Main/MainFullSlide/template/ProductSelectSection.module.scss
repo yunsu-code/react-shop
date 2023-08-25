@@ -1,24 +1,115 @@
+@import '@scss_util';
 .pdSlide {
   height: 100%;
-  .imgSec {
-    display: none;
-  }
   .productSec {
-    height: 100%;
-    .productSecSwiper {
-      height: 100vw;
-    }
-    .pd {
-      height: 100vw;
-      img {
-        width: 100%;
-      }
-    } 
+    background-color: $deepPink;
   }
-  [class^="swiper-pagination"] {
+  [class^='swiper-pagination'] {
     position: absolute;
-
+    top: auto !important;
+    bottom: 55px !important;
   }
   .paginationBtn {
+    width: 26px;
+    height: 26px;
+    color: $white;
+    font-family: $engTitle;
+    font-size: $m;
+    span {
+      display: block;
+      margin-top: -3px;
+    }
+    &[class~='swiper-pagination-bullet-active'] {
+      background-color: $white;
+      color: $black;
+    }
+  }
+  &.sm {
+    .imgSec {
+      display: none;
+    }
+    .productSec {
+      height: 100%;
+      .productSecSwiper {
+        height: 100vw;
+      }
+      .pd {
+        height: 100vw;
+        img {
+          width: 100%;
+        }
+      }
+    }
+  }
+  &.lg {
+    display: flex;
+    .imgSec {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50%;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+      background-color: $deepPink;
+      &::after {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 0;
+        background-color: $deepPink;
+        background-image: url(../../../../../img/home/01_main_slider2_pc_bg.jpg);
+        background-position: center;
+        -webkit-filter: blur(26px);
+        filter: blur(26px);
+        opacity: 0.7;
+      }
+      .imgWrap {
+        width: auto;
+        height: auto;
+        position: relative;
+        display: inline-flex;
+        z-index: 3;
+      }
+      img {
+        width: auto;
+        height: 100vh;
+        transform: translateX(-50%);
+        position: relative;
+        left: 50%;
+      }
+      .numbtn {
+        position: absolute;
+        z-index: 3;
+      }
+      .numbtn1 {
+        top: 23vh;
+        left: 25%;
+      }
+      .numbtn2 {
+        top: 58vh;
+        left: 35%;
+      }
+    }
+    .productSec {
+      width: 50%;
+      height: 100%;
+      .productSecSwiper {
+        height: 100%;
+      }
+      .pd {
+        display: inline-flex;
+        justify-content: center;
+        height: 100vh;
+        padding-top: 10px;
+        img {
+          height: 83%;
+        }
+      }
+    }
   }
 }

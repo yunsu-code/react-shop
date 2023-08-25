@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
 import cx from 'classnames';
-import styles from 'assets/scss/view/Main/MainContainer.module.scss';
-import S from 'assets/scss/components/atoms/UiHalfWrap.module.scss';
-import MainFullSlide from './MainFullSlide/MainFullSlide';
-import MostLoved from './MostLoved/MostLoved';
-import NewProduct from './NewProduct/NewProduct';
-import SNS from './SNS/SNS';
+// import styles from '@scss_view/main/MainContainer.module.scss';
+import S from '@scss_comp/atoms/UiHalfWrap.module.scss';
+import MainFullSlide from './mainFullSlide/MainFullSlide';
+import MostLoved from './mostLoved/MostLoved';
+import NewProduct from './newProduct/NewProduct';
+import SNS from './sns/SNS';
 
 const MainContainer = () => {
   const container = document.getElementsByClassName(`${S.fullContainer}`);

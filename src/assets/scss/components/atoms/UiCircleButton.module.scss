@@ -1,4 +1,4 @@
-@import '../../common/utils';
+@import '@scss_util';
 
 .circleBtn {
   display: inline-flex;
@@ -14,16 +14,16 @@
     font-family: $engTitle;
   }
   &.white {
-    background-color: #fff;
+    background-color: $white;
     &.hover:hover {
       background-color: $pink;
-      color: #fff;
+      color: $white;
     }
   }
 
   &.pink {
     background-color: $pink;
-    color: #fff;
+    color: $white;
   }
 
   @include tablet {

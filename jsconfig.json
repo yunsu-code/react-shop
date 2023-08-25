@@ -1,6 +1,14 @@
 {
   "compilerOptions": {
-    "baseUrl": "src"
-  },
-  "include": ["src"]
+    "baseUrl": "src",
+    "paths": {
+      "@assets/*": ["src/assets/*"],
+      "@img/*": ["src/assets/img/*"],
+      "@scss_comp/*": ["src/assets/scss/components/*"],
+      "@scss_view/*": ["src/assets/scss/view/*"],
+      "@scss_util/*": ["src/assets/scss/common/_utils.scss"],
+      "@page/*": ["src/view/*"],
+      "@components/*": ["src/components/*"]
+    }
+  }
 }

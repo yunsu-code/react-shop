@@ -1,7 +1,9 @@
-import React from 'react';
-
 const MainSectionTopBox = () => {
-  return <div>MainSectionTopBox</div>;
+  return (
+    <div>
+      <h2></h2>
+    </div>
+  );
 };
 
 export default MainSectionTopBox;
