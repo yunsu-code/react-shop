@@ -1,13 +1,35 @@
 @import '@scss_util';
 .pdSlide {
   height: 100%;
+  background-color: $deepPink;
   .productSec {
-    background-color: $deepPink;
+    .productSecSwiper {
+      height: 100%;
+    }
+    .pd {
+      display: inline-flex;
+      justify-content: center;
+      height: 100vh;
+    }
+    .pdInner {
+      text-align: center;
+      color: $darkBlack;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      .price {
+        margin-bottom: 3vh;
+        margin-top: 5px;
+      }
+      .linkBtn {
+        font-weight: 300;
+      }
+    }
   }
   [class^='swiper-pagination'] {
     position: absolute;
     top: auto !important;
-    bottom: 55px !important;
+    bottom: 6.5vh !important;
   }
   .paginationBtn {
     width: 26px;
@@ -29,16 +51,26 @@
       display: none;
     }
     .productSec {
-      height: 100%;
-      .productSecSwiper {
-        height: 100vw;
-      }
-      .pd {
-        height: 100vw;
+      .pdInner {
+        height: calc(100% - 26px - 7vh);
         img {
-          width: 100%;
+          height: 52vh;
+          margin-bottom: 1.5vh;
+        }
+        .name {
+          letter-spacing: -0.2px;
+          font-weight: 700;
+        }
+        .price {
+          font-size: $m;
+        }
+        .linkBtn {
+          font-size: $base;
         }
       }
+    }
+    [class^='swiper-pagination'] {
+      bottom: 7vh !important;
     }
   }
   &.lg {
@@ -64,9 +96,11 @@
         background-color: $deepPink;
         background-image: url(../../../../../img/home/01_main_slider2_pc_bg.jpg);
         background-position: center;
+        background-size: cover;
         -webkit-filter: blur(26px);
         filter: blur(26px);
         opacity: 0.7;
+        transform: scale(1.1);
       }
       .imgWrap {
         width: auto;
@@ -88,9 +122,13 @@
       }
       .numbtn1 {
         top: 23vh;
-        left: 25%;
+        left: 28%;
       }
       .numbtn2 {
+        top: 38vh;
+        left: 28%;
+      }
+      .numbtn3 {
         top: 58vh;
         left: 35%;
       }
@@ -98,18 +136,24 @@
     .productSec {
       width: 50%;
       height: 100%;
-      .productSecSwiper {
-        height: 100%;
-      }
-      .pd {
-        display: inline-flex;
-        justify-content: center;
-        height: 100vh;
-        padding-top: 10px;
+      .pdInner {
+        height: calc(100% - 26px - 8vh);
         img {
-          height: 83%;
+          height: 62vh;
+          margin-bottom: 1.5vh;
+        }
+        .name {
+          font-size: $lg;
+          letter-spacing: -0.2px;
+          font-weight: 700;
+        }
+        .price {
+          font-size: 22px;
         }
       }
+    }
+    [class^='swiper-pagination'] {
+      bottom: 8vh !important;
     }
   }
 }

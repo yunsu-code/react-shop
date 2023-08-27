@@ -7,7 +7,9 @@ import SwiperCore, { Pagination } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import UiCircleButton from '@components/atoms/UiCircleButton';
+import UiUnderlineLink from '@components/atoms/UiUnderlineLink';
 import useMediaQuery from 'assets/js/useMediaQuery';
+import UiPrice from '@components/atoms/UiPrice';
 
 const ProductSelectSection = () => {
   const colorBtn = [
@@ -19,10 +21,31 @@ const ProductSelectSection = () => {
       name: 'numbtn2',
       active: false,
     },
+    {
+      name: 'numbtn3',
+      active: false,
+    },
+  ];
+  const products = [
+    {
+      img: '01_main_slider2_pdt01.png',
+      name: '뉴 엠비언스 컬러 마스카라 얼루어드',
+      price: 21000,
+    },
+    {
+      img: '01_main_slider2_pdt02.png',
+      name: '트루 디멘션 레이어링 치크',
+      price: 29000,
+    },
+    {
+      img: '01_main_slider2_pdt03.png',
+      name: '무드인핸서 리퀴드 마뜨 해치아웃',
+      price: 19000,
+    },
   ];
   const isTablet = useMediaQuery(900);
   const sliderRef = useRef();
-  const [menuItems, setMenuItems] = useState(colorBtn);
+  const [circleBtrns, setcircleBtrns] = useState(colorBtn);
   const [swiperIndex, setSwiperIndex] = useState(0);
   var pageBtn = document.getElementsByClassName(`${styles.paginationBtn}`);
 
@@ -42,7 +65,7 @@ const ProductSelectSection = () => {
   };
 
   const clickHandler = (name, index) => {
-    setMenuItems(items =>
+    setcircleBtrns(items =>
       items.map(item => ({
         ...item,
         active: item.name === name,
@@ -61,7 +84,7 @@ const ProductSelectSection = () => {
       }
       pageBtn[i].addEventListener('click', e => {
         var num = parseInt(e.target.innerText) - 1;
-        setMenuItems(items =>
+        setcircleBtrns(items =>
           items.map((item, index) => ({
             ...item,
             active: index === num,
@@ -79,7 +102,7 @@ const ProductSelectSection = () => {
             src={require('assets/img/home/01_main_slider2_pc_bg.jpg')}
             alt=""
           />
-          {menuItems.map((item, index) => (
+          {circleBtrns.map((item, index) => (
             <UiCircleButton
               className={cx(`${styles.numbtn}`, `${styles[item.name]}`)}
               color={item.active ? 'white' : 'pink'}
@@ -95,22 +118,28 @@ const ProductSelectSection = () => {
       <div className={styles.productSec}>
         <Swiper
           ref={sliderRef}
+          allowTouchMove={false}
           onSlideChange={e => setSwiperIndex(e.activeIndex)}
           pagination={pagination}
           className={styles.productSecSwiper}
         >
-          <SwiperSlide className={styles.pd}>
-            <img
-              src={require('assets/img/home/01_main_slider2_pdt01.png')}
-              alt=""
-            />
-          </SwiperSlide>
-          <SwiperSlide className={styles.pd}>
-            <img
-              src={require('assets/img/home/01_main_slider2_pdt02.png')}
-              alt=""
-            />
-          </SwiperSlide>
+          {products.map((item, index) => (
+            <SwiperSlide className={styles.pd} key={index}>
+              <div className={styles.pdInner}>
+                <img src={require(`assets/img/home/${item.img}`)} alt="" />
+                <p className={styles.name}>{item.name}</p>
+                <p className={styles.price}>
+                  <UiPrice num={item.price} />
+                </p>
+                <UiUnderlineLink
+                  className={styles.linkBtn}
+                  text={'shop >'}
+                  color={'light'}
+                  fontSize={'16px'}
+                />
+              </div>
+            </SwiperSlide>
+          ))}
         </Swiper>
       </div>
     </div>

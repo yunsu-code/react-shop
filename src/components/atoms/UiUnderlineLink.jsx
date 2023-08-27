@@ -7,12 +7,13 @@ const UiUnderlineLink = ({
   text,
   fontSize = '12px',
   color = 'pink',
+  className,
 }) => {
   return (
     <a
       href={link}
       style={{ fontSize: fontSize }}
-      className={cx(`${styles.lineLink}`, styles[color])}
+      className={cx(`${styles.lineLink}`, styles[color], className)}
     >
       {text}
     </a>

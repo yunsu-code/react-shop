@@ -1,4 +1,4 @@
-@import '../../common/utils';
+@import '@scss_util';
 
 .lineLink {
   text-decoration: underline;
@@ -10,6 +10,15 @@
     color: $pink;
   }
   &.white {
-    color: #fff;
+    color: $white;
+  }
+  &.black {
+    color: $black;
+  }
+  &.darkBlack {
+    color: $darkBlack;
+  }
+  &.light {
+    color: $light;
   }
 }
