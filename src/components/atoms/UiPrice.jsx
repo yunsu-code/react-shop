@@ -1,7 +1,6 @@
 import styles from '@scss_comp/atoms/UiPrice.module.scss';
 
 const UiPrice = num => {
-  console.log(num);
   return (
     <>
       <span className={styles.price}>

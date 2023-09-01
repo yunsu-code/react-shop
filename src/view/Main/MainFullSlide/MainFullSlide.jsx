@@ -1,8 +1,7 @@
 import { useRef } from 'react';
-import cx from 'classnames';
 import UiHalfWrap from '@components/atoms/UiHalfWrap';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore, { Navigation } from 'swiper';
+import { Navigation } from 'swiper/modules';
 import styles from '@scss_view/main/mainFullSlide/MainFullSlide.module.scss';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -10,7 +9,6 @@ import VideoSection from './template/VideoSection';
 import ProductSelectSection from './template/ProductSelectSection';
 
 const MainFullSlide = () => {
-  SwiperCore.use([Navigation]);
   const prevRef = useRef(null);
   const nextRef = useRef(null);
   return (
@@ -20,9 +18,11 @@ const MainFullSlide = () => {
         <Swiper
           className={styles.swiper}
           modules={[Navigation]}
+          navigation={{
+            prevEl: prevRef.current,
+            nextEl: nextRef.current,
+          }}
           onInit={swiper => {
-            swiper.params.navigation.prevEl = prevRef.current;
-            swiper.params.navigation.nextEl = nextRef.current;
             swiper.navigation.init();
             swiper.navigation.update();
           }}

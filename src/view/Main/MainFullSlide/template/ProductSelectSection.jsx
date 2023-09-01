@@ -3,7 +3,7 @@ import { useEffect, useState, useRef } from 'react';
 import cx from 'classnames';
 import styles from '@scss_view/main/mainFullSlide/template/ProductSelectSection.module.scss';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore, { Pagination } from 'swiper';
+import { Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import UiCircleButton from '@components/atoms/UiCircleButton';
@@ -49,7 +49,6 @@ const ProductSelectSection = () => {
   const [swiperIndex, setSwiperIndex] = useState(0);
   var pageBtn = document.getElementsByClassName(`${styles.paginationBtn}`);
 
-  SwiperCore.use([Pagination]);
   const pagination = {
     clickable: true,
     renderBullet: function (index, className) {
@@ -121,6 +120,7 @@ const ProductSelectSection = () => {
           allowTouchMove={false}
           onSlideChange={e => setSwiperIndex(e.activeIndex)}
           pagination={pagination}
+          modules={[Pagination]}
           className={styles.productSecSwiper}
         >
           {products.map((item, index) => (
