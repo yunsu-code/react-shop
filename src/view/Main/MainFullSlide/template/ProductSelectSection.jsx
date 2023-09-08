@@ -8,8 +8,8 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import UiCircleButton from '@components/atoms/UiCircleButton';
 import UiUnderlineLink from '@components/atoms/UiUnderlineLink';
-import useMediaQuery from 'assets/js/useMediaQuery';
 import UiPrice from '@components/atoms/UiPrice';
+import UiContainer from '@components/atoms/UiContainer';
 
 const ProductSelectSection = () => {
   const colorBtn = [
@@ -43,7 +43,6 @@ const ProductSelectSection = () => {
       price: 19000,
     },
   ];
-  const isTablet = useMediaQuery(900);
   const sliderRef = useRef();
   const [circleBtrns, setcircleBtrns] = useState(colorBtn);
   const [swiperIndex, setSwiperIndex] = useState(0);
@@ -94,7 +93,11 @@ const ProductSelectSection = () => {
   }, []);
 
   return (
-    <div className={cx(styles.pdSlide, isTablet ? styles.sm : styles.lg)}>
+    <UiContainer
+      tablet={styles.tablet}
+      pc={styles.pc}
+      className={styles.pdSlide}
+    >
       <div className={styles.imgSec}>
         <div className={styles.imgWrap}>
           <img
@@ -142,7 +145,7 @@ const ProductSelectSection = () => {
           ))}
         </Swiper>
       </div>
-    </div>
+    </UiContainer>
   );
 };
 

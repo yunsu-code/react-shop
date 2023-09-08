@@ -7,6 +7,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import UiHalfWrap from '@components/atoms/UiHalfWrap';
+import UiContainer from '@components/atoms/UiContainer';
 import useMediaQuery from 'assets/js/useMediaQuery';
 import styles from '@scss_view/main/mostLoved/MostLoved.module.scss';
 
@@ -75,95 +76,95 @@ const MostLoved = () => {
   };
 
   return (
-    <UiHalfWrap
-      firstChild={
-        <Swiper
-          className={styles.posterSlide}
-          ref={posterSlideRef}
-          modules={[Navigation, Pagination]}
-          onSlideChange={e => {
-            setPdActive(e.activeIndex);
-            pdSlideRef.current.swiper.slideTo(e.activeIndex);
-          }}
-          watchSlidesProgress={true}
-          navigation={{
-            prevEl: prevRef.current,
-            nextEl: nextRef.current,
-          }}
-          pagination={{
-            type: 'progressbar',
-            renderProgressbar: function (progressbarFillClass) {
-              return ReactDOMServer.renderToStaticMarkup(
-                <span
-                  className={cx(progressbarFillClass, styles.progressbar)}
-                ></span>,
-              );
-            },
-          }}
-          onInit={swiper => {
-            swiper.navigation.init();
-            swiper.navigation.update();
-          }}
-        >
-          {posters?.map((item, index) => (
-            <SwiperSlide className={styles.poster} key={index}>
-              <img
-                src={require(`assets/img/home/${
-                  isTablet ? item?.mo : item?.pc
-                }.jpg`)}
-                className="swiper-lazy"
-                alt=""
-              />
-            </SwiperSlide>
-          ))}
-          <div ref={prevRef} className={styles.prev}></div>
-          <div ref={nextRef} className={styles.next}></div>
-        </Swiper>
-      }
-      secondChild={
-        <Swiper
-          ref={pdSlideRef}
-          breakpoints={{
-            // when window width is >= 320px
-            320: {
-              slidesPerView: 2,
-              spaceBetween: 20,
-            },
-            // when window width is >= 480px
-            480: {
-              slidesPerView: 3,
-              spaceBetween: 30,
-            },
-            // when window width is >= 640px
-            640: {
-              slidesPerView: 4,
-              spaceBetween: 40,
-            },
-          }}
-          allowTouchMove={false}
-          centeredSlides={true}
-        >
-          {products.map((item, index) => (
-            <SwiperSlide
-              key={index}
-              className={cx(
-                styles.pdList,
-                index === pdActive ? styles.active : '',
-              )}
-              onClick={() => PdClick(index)}
+    <UiContainer tablet={styles.tablet} pc={styles.pc}>
+      <UiHalfWrap
+        firstChild={
+          <Swiper
+            className={styles.posterSlide}
+            ref={posterSlideRef}
+            modules={[Navigation, Pagination]}
+            onSlideChange={e => {
+              setPdActive(e.activeIndex);
+              pdSlideRef.current.swiper.slideTo(e.activeIndex);
+            }}
+            watchSlidesProgress={true}
+            navigation={{
+              prevEl: prevRef.current,
+              nextEl: nextRef.current,
+            }}
+            pagination={{
+              type: 'progressbar',
+              renderProgressbar: function (progressbarFillClass) {
+                return ReactDOMServer.renderToStaticMarkup(
+                  <span
+                    className={cx(progressbarFillClass, styles.progressbar)}
+                  ></span>,
+                );
+              },
+            }}
+          >
+            {posters?.map((item, index) => (
+              <SwiperSlide className={styles.poster} key={index}>
+                <img
+                  src={require(`assets/img/home/${
+                    isTablet ? item?.mo : item?.pc
+                  }.jpg`)}
+                  className="swiper-lazy"
+                  alt=""
+                />
+              </SwiperSlide>
+            ))}
+            <div ref={prevRef} className={styles.prev}></div>
+            <div ref={nextRef} className={styles.next}></div>
+          </Swiper>
+        }
+        secondChild={
+          <>
+            <Swiper
+              ref={pdSlideRef}
+              breakpoints={{
+                // when window width is >= 320px
+                320: {
+                  slidesPerView: 2,
+                  spaceBetween: 20,
+                },
+                // when window width is >= 480px
+                480: {
+                  slidesPerView: 3,
+                  spaceBetween: 30,
+                },
+                // when window width is >= 640px
+                640: {
+                  slidesPerView: 4,
+                  spaceBetween: 40,
+                },
+              }}
+              allowTouchMove={false}
+              centeredSlides={true}
             >
-              <img
-                src={require(`assets/img/home/${item.img}.jpg`)}
-                className="swiper-lazy"
-                alt=""
-              />
-              <p>{item.name}</p>
-              <p>{item.sub}</p>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      }
-    ></UiHalfWrap>
+              {products.map((item, index) => (
+                <SwiperSlide
+                  key={index}
+                  className={cx(
+                    styles.pdList,
+                    index === pdActive ? styles.active : '',
+                  )}
+                  onClick={() => PdClick(index)}
+                >
+                  <img
+                    src={require(`assets/img/home/${item.img}.jpg`)}
+                    className="swiper-lazy"
+                    alt=""
+                  />
+                  <p>{item.name}</p>
+                  <p>{item.sub}</p>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </>
+        }
+      ></UiHalfWrap>
+    </UiContainer>
   );
 };
 

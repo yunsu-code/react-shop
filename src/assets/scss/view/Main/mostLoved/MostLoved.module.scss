@@ -1,4 +1,10 @@
 @import '@scss_util';
+.tablet {
+  background-color: rebeccapurple;
+}
+.pc {
+  background-color: black;
+}
 .posterSlide {
   .prev {
     width: 40px !important;

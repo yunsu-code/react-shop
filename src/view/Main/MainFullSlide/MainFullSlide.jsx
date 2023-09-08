@@ -21,10 +21,11 @@ const MainFullSlide = () => {
           navigation={{
             prevEl: prevRef.current,
             nextEl: nextRef.current,
+            clickable: true,
           }}
-          onInit={swiper => {
-            swiper.navigation.init();
-            swiper.navigation.update();
+          onBeforeInit={swiper => {
+            swiper.params.navigation.nextEl = nextRef.current;
+            swiper.params.navigation.prevEl = prevRef.current;
           }}
         >
           <SwiperSlide>

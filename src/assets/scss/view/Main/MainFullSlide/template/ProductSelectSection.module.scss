@@ -46,7 +46,7 @@
       color: $black;
     }
   }
-  &.sm {
+  &.tablet {
     .imgSec {
       display: none;
     }
@@ -73,7 +73,7 @@
       bottom: 7vh !important;
     }
   }
-  &.lg {
+  &.pc {
     display: flex;
     .imgSec {
       display: flex;
